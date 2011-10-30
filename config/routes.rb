@@ -1,10 +1,22 @@
 SampleApp::Application.routes.draw do
-  get "pages/home"
 
-  get "pages/contact"
+ # get "pages/home"
+
+  #get "pages/contact"
   
-  get "pages/about"
+ # get "pages/about"
   
+ # get "pages/help"
+ 
+ #These also create about_path and about_url!!
+ #about_path => '/about'
+#about_url  => 'http://localhost:3000/about'
+  get "users/new"
+
+  match '/signup',  :to => 'users#new'
+  match '/contact', :to => 'pages#contact'
+  match '/about',   :to => 'pages#about'
+  match '/help',    :to => 'pages#help'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -56,6 +68,10 @@ SampleApp::Application.routes.draw do
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
 
+  #root_path => '/'
+  #root_url  => 'http://localhost:3000/'
+  root :to => "pages#home"
+  
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
